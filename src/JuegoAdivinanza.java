@@ -4,16 +4,19 @@ import java.util.Scanner;
 public class JuegoAdivinanza {
     public static void main(String[] args) {
         Random random = new Random();
-        int numeroSecreto = random.nextInt(100) + 1;
-
+        int maximo =100;
+        int numeroSecreto = random.nextInt(maximo) + 1;
+        
         Scanner scanner = new Scanner(System.in);
         int intentos = 0;
+        int intentos_permitidos=10;
+        int indice=1;
 
 
-        System.out.println("Adivina el número entre 1 y " + 100 + "Tienes 10 intentos");
+        System.out.println("Adivina el número entre 1 y " + maximo + " Tienes 10 intentos");
 
-        while (intentos < 10) {
-            System.out.print("Intento " + (intentos + 1) + ": ");
+        while (intentos < intentos_permitidos) {
+            System.out.print("Intento " + (intentos + indice) + ": ");
             int adivinanza = scanner.nextInt();
             intentos++;
 
@@ -26,7 +29,7 @@ public class JuegoAdivinanza {
                 System.out.println("El número es menor.");
             }
 
-            if (intentos == 10) {
+            if (intentos == intentos_permitidos) {
                 System.out.println("Se acabaron los intentos. El número era " + numeroSecreto);
                 System.out.println("El número secreto era: " + numeroSecreto);
             }
